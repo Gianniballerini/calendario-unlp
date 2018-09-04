@@ -1,0 +1,87 @@
+<!-- CARRERAS -->
+<div class="row">
+  <% @careers.each do |career| %>
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title"><div><%= career.name %></div></span>
+        </div>
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width">
+          <!-- AÑOS -->
+            <% career.years.each do |year| %>
+              <li class="tab">
+                <a href="#<%= year.id %>tabs"><%= year.name %></a>
+              </li>
+            <% end %>
+          <!-- FIN AÑOS -->
+          </ul>
+        </div>
+        <div class="card-content grey lighten-4">
+          <% career.years.each do |year| %>
+            <div id="<%= year.id %>tabs">
+              <ul class="collapsible popout">
+                <% year.subjects.each do |subject| %>
+                  <li>
+                    <div class="collapsible-header">
+                      <%= subject.name %>
+                    </div>
+                    <div class="collapsible-body">
+                      <ul class="collection">
+                              <%= link_to({ :controller => 'events', :action => 'new', :subject_id => subject}, {:class => 'tooltipped center green lighten-3 collection-item', :'data-position' => 'bottom', :'data-delay' => '50', :'data-tooltip' => 'Agregar Horario'}) do %>
+                                <span class="material-icons white-text">add</span>
+                              <% end %>
+                        <% subject.events.each do |event| %>
+
+                            <div class="valign-wrapper row">
+                          <li class="collection-item grey lighten-4 ">
+                              <div class="col s6 m4"> <%= event.name %> </div>
+                              <div class="col s6 m2"> <%= event.start_date.strftime("%A") %> </div>
+                              <div class="col s12 m2 center"> De <%= event.start_time.strftime("%H:%M") %> a <%= event.end_time.strftime("%H:%M") %></div>
+                              <div class="col s6 m2">
+                                <a class="btn-flat modal-trigger" href="#<%= event.id %>">
+                                  <span class="material-icons align-icon-text">info_outline</span>
+                                </a>
+                              </div>
+                              <div class="col s6 m2">
+                                <a class="btn-flat modal-trigger" href="#<%= event.id %>">
+                                  <span class="material-icons align-icon-text">star_border</span>
+                                </a>
+                              </div>
+
+                          </li>
+                            </div>
+                        
+
+                          <!-- Modal Structure -->
+                          <div id="<%= event.id %>" class="modal">
+                            <div class="card-image">
+                              <img src="assets/calendar">
+                               <span class="card-title"><%= event.name.capitalize %></span>
+                            </div>
+                            <div class="card-content">
+                              <h4></h4>
+                              <div>From <%= event.start_time.strftime("%H:%M") %> to <%= event.end_time.strftime("%H:%M") %></div>
+                              <div>From <%= event.start_date.strftime("%B %d") %> until <%= event.end_date.strftime("%B %d") %></div>
+                              <div><%= event.description %></div>
+                              <div>Creado por: <%= nick(event.user.email) %></div>
+                            </div>
+                          </div>
+                          <!-- FIN MODAL -->
+                        <% end %>
+                      </ul>
+                    </div>
+                  </li>
+                  
+                <% end %>
+              </ul>
+                
+
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>     
+</div>
+<!-- FIN CARRERAS -->

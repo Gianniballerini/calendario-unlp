@@ -1,0 +1,36 @@
+
+<nav class=" cyan darken-1">
+		<div class="nav-wrapper">
+      <%= link_to(root_path, class: "brand-logo center") do %>
+        <i class=" material-icons">school</i><span class="flow-text hide-on-med-and-down">Horarios UNLP informatica</span>
+      <% end %>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <% if user_signed_in? %>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <span class="material-icons align-icon-text">pets</span>
+            <%= nick(current_user.email) %>
+          </li>
+          <li>
+            <%= link_to(destroy_user_session_path, method: :delete, :class => 'tooltipped', :'data-position' => 'bottom', :'data-delay' => '50', :'data-tooltip' => 'Logout') do %>
+              <span class="material-icons align-icon-text">exit_to_app</span>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+		</div>
+	</nav>
+
+  <ul class="sidenav" id="mobile-demo">
+  <% if user_signed_in? %>
+    <li class="center">
+      <span class="material-icons align-icon-text">pets</span>
+        <%= nick(current_user.email) %>
+    </li>
+    <li class="center">
+        <%= link_to(destroy_user_session_path, method: :delete) do %>
+        <span class="material-icons align-icon-text">exit_to_app</span> Log Out
+        <% end %>
+      </li>
+  <% end %>
+  </ul>

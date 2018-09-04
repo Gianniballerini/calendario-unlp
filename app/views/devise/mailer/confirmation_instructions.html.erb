@@ -1,0 +1,13 @@
+<header class="full">
+  <%= render "devise/shared/headTitle"  %>
+</header>
+
+<div class="card blue-grey darken-1">
+	<div class="card-content white-text">
+		<span class="card-title">Welcome <%= @email %>!</span>
+		<p>You can confirm your account email through the link below:</p>
+    </div>
+    <div class="card-action">
+		<%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
+    </div>
+</div>

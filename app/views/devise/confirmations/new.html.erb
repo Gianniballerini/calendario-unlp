@@ -1,0 +1,25 @@
+<header class="full">
+  <%= render "devise/shared/headTitle"  %>
+</header>
+<br>
+<h2>Resend confirmation instructions</h2>
+<br>
+<main class="full valign-wrapper">
+	<div class="container">
+		<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  		<%= devise_error_messages! %>
+
+  		<div class="input-field">
+  			<i class="material-icons prefix">mail</i>
+    		<%= f.label :email %><br />
+    		<%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+  		</div>
+
+  		<div class="actions center">
+    		<%= f.submit "Resend confirmation instructions", :class => 'btn' %>
+  		</div>
+		<% end %>
+		<br>
+		<%= render "devise/shared/links" %>
+	</div>
+</main>

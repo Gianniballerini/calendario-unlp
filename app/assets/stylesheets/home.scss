@@ -1,0 +1,18 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//esto hace que el footer sea sticky al bottom.
+body {
+     display: flex;
+     min-height: 100vh;
+     flex-direction: column;
+ }
+ main {
+     flex: 1 0 auto;
+ }
+
+ .align-icon-text{
+ vertical-align: text-bottom;
+}

@@ -1,0 +1,39 @@
+<header class="full">
+  <%= render "shared/topnav"  %>
+</header>
+<h2 class="center">Ingresar</h2>
+<main class="full">
+<div class="container">
+  <br>
+  <br>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="input-field">
+    <i class="material-icons prefix">mail</i>
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: :'required', class: :validate %>
+    <span class="helper-text" data-error="Formato incorecto"></span>
+  </div>
+
+  <div class="input-field">
+    <i class="material-icons prefix">lock</i>
+    <%= f.label :password %><br />
+    <%= f.password_field :password , autocomplete: :"off", pattern: :'.{6,}', required: :'required', class: :validate %>
+    <span class="helper-text" data-error="Al menos 6 caracteres." data-success="good  "></span>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions center">
+    <%= f.submit "Log in", :class => 'btn' %>
+  </div>
+<% end %>
+<br>
+<%= render "devise/shared/links", :class => 'center' %>
+</div>
+</main>
+
