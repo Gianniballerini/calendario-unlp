@@ -30,13 +30,14 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # materialize uses the material design for the views
-gem 'materialize-sass', '~>0.97.8'
+gem 'materialize-sass', '~> 1.0.0'
 gem 'jquery-rails'
 # devise helps you to manage accounts, registrations, permitions, sing-in/out, etc.
 gem 'devise'
 
 #Acts as Votable is an easy solution to making votable objects
 gem 'acts_as_votable', '~> 0.11.1'
+gem 'icalendar', '~> 2.5'
 
 gem "font-awesome-rails"
 
@@ -49,7 +50,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  # Better errors provides a more usable error screen 
+  # Better errors provides a more usable error screen
   gem "better_errors"
 end
 

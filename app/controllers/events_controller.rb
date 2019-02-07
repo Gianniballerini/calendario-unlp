@@ -26,16 +26,16 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @subject = Subject.find(params[:subject][:id])
+    @event.subject_id= @subject.id
+    @event.user_id=current_user.id
     puts @event.inspect
-    # @subject = Subject.find(params[:subject][:id])
-    # @event.subject_id= @subject.id
-    # @event.user_id=current_user.id
-    # if @event.save
-    #   redirect_to root_path, notice: 'Event was successfully created.'
-    # else
-    #   # render plain: @event.inspect
-    #   render :new
-    # end
+    if @event.save
+      redirect_to root_path, notice: 'Event was successfully created.'
+    else
+      # render plain: @event.inspect
+      render :new
+    end
   end
 
   # PATCH/PUT /events/1
@@ -56,10 +56,7 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to proc {root_path + "#userEvents"}, notice: 'Event was successfully deleted.'
   end
 
   private

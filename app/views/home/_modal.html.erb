@@ -1,0 +1,25 @@
+<div id="<%= event.id %>" class="modal">
+  <div class="modal-content">
+    <div class="card-panel cyan">
+      <h4 class="center"><%= event.subject.name.capitalize %></h4>
+    </div>
+    <div class="card-content">
+      <span class="card-title"><%= event.name.capitalize %></span>
+      <div>De <%= event.start_time.strftime("%H:%M") %> a <%= event.end_time.strftime("%H:%M") %></div>
+      <% if event.start_date == event.end_date %>
+      <div>
+        El <%=  l event.start_date, format: :dayMonth %>
+      </div>
+      <% else %>
+      <div>
+        Los <%=  l event.start_date, format: :day %>
+      </div>
+      <div>
+        Desde el <%= l event.start_date, format: :dayMonth %> hasta el <%= l event.end_date, format: :dayMonth %>
+      </div>
+      <% end %>
+      <div><%= event.description %></div>
+      <div>Creado por: <%= nick(event.user.email) %></div>
+    </div>
+  </div>
+</div>

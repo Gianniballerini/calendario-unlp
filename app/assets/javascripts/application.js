@@ -19,9 +19,6 @@ $(document).ready(function(){
 
 
   M.AutoInit();
-  	
-  $('.datepicker').datepicker({
-  	yearRange: 0
-  });
+ 
 
 });

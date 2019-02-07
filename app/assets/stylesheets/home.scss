@@ -16,3 +16,17 @@ body {
  .align-icon-text{
  vertical-align: text-bottom;
 }
+
+.mb-0{
+  margin-bottom: 0 !important;
+}
+
+.card-h{
+  height: 100vh;
+}
+
+.fila{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

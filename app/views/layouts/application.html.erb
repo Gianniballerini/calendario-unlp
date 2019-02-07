@@ -9,12 +9,12 @@
     
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
   </head>
 
   <body>
     <%= yield %>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <% flash.each do |message_type, message|
       type = message_type.to_s.gsub('alert', 'red lighten-5').gsub('notice', 'blue lighten-5') %>
       <%= javascript_tag "M.toast({html: '#{message}', classes:'#{type} black-text rounded'})" %>

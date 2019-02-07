@@ -1,0 +1,26 @@
+<ul class="collection">
+  <% current_user.events.each do |event| %>
+    <li class="collection-item cyan darken-1">
+      <div class="row  mb-0">
+        <div class="col s5 ">
+          <a href="#!" class="breadcrumb"><%= event.subject.year.career.name %></a>
+          <a href="#!" class="breadcrumb"><%= t(event.subject.year.name) %></a>
+          <a href="#!" class="breadcrumb"><%= event.subject.name %></a>
+        </div>
+        <div class="col s4">
+          <%= event.name.capitalize %>
+        </div>
+        <div class="col s3">
+          <%= (l event.start_date, format: :day).capitalize %>
+          De <%= event.start_time.strftime("%H:%M") %> a <%= event.end_time.strftime("%H:%M") %>
+          <%= link_to({controller: "events", action: "destroy", id: event.id}, method: :delete, class:"tooltipped secondary-content", data: {confirm: 'Está por eliminar un evento. Está seguro?', position: 'bottom', delay: '50', tooltip: 'eliminar'}) do %>
+            <span class="material-icons black-text">delete</span>
+          <% end %>
+          <a class="btn-flat modal-trigger secondary-content" href="#<%= event.id %>">
+            <span class="material-icons align-icon-text">info_outline</span>
+          </a>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

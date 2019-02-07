@@ -1,0 +1,21 @@
+<ul class="collapsible">
+  <% @careers.each do |career| %>
+  <li>
+   <div class="collapsible-header">
+    <label>
+        <span> <%= career.name %> </span>
+    </label>
+   </div>
+   <div class="collapsible-body">
+    <div class="fila">
+      <% career.years.each do |year| %>
+        <div class="btn">
+          <%= t(year.name.to_s) %>
+        </div>
+      <% end %>
+    </div>
+   </div>
+ </li>
+
+ <% end %>
+</ul>
