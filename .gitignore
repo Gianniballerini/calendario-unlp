@@ -17,8 +17,7 @@ config/initializers/secret_token.rb
 config/master.key
 
 # Only include if you have production secrets in this file, which is no longer a Rails default
-config/secrets.yml
-config/application.yml
+# config/secrets.yml
 
 # dotenv
 # TODO Comment out this rule if environment variables can be committed
@@ -47,3 +46,17 @@ bower.json
 
 # Ignore node_modules
 node_modules/
+
+# Ignore precompiled javascript packs
+/public/packs
+/public/packs-test
+/public/assets
+
+# Ignore yarn files
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
