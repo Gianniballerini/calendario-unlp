@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20180510140755) do
     t.boolean "recurrent"
     t.date "start_date"
     t.date "end_date"
+    t.date "date"
     t.string "description"
     t.bigint "user_id"
     t.bigint "subject_id"

@@ -26,16 +26,16 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @subject = Subject.find(params[:subject][:id])
+    @event.subject_id= @subject.id
+    @event.user_id=current_user.id
     puts @event.inspect
-    # @subject = Subject.find(params[:subject][:id])
-    # @event.subject_id= @subject.id
-    # @event.user_id=current_user.id
-    # if @event.save
-    #   redirect_to root_path, notice: 'Event was successfully created.'
-    # else
-    #   # render plain: @event.inspect
-    #   render :new
-    # end
+    if @event.save
+      redirect_to root_path, notice: 'Event was successfully created.'
+    else
+      # render plain: @event.inspect
+      render :new
+    end
   end
 
   # PATCH/PUT /events/1
@@ -63,14 +63,14 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      # params.fetch(:event, {})
-       params.require(:event).permit(:name, :description, :start_time, :end_time, :start_date, :end_date, :recurrent)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    # params.fetch(:event, {})
+    params.require(:event).permit(:name, :description, :start_time, :end_time, :date, :start_date, :end_date, :recurrent)
+  end
 end

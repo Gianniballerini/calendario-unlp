@@ -1,62 +1,64 @@
 <%= form_with(model: event, local: true) do |form| %>
-
-<div class="actions container center">
-  <div class="row">
-    <% if event.errors.any? %>
-    <div id="error_explanation" class="col s12 m12">
-      <div class="card-panel orange">
-        <span>
-          <h3 class="flow-text"><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h3>
-
-          <ul class="collection">
-            <% event.errors.full_messages.each do |message| %>
-            <li class="collection-item"><%= message %></li>
-            <% end %>
-          </ul>
-        </span>
-      </div>  
+  <div class="actions container center">
+    <div class="row">
+      <br>
+      <div class='input-field col s12 m12'>
+        <%= label_tag(:name, "Nombre") %>
+        <%= form.text_field :name, :class => 'validate', :id => 'name', required: :'required' %>
+      </div>
+      <div class='input-field col s12 m12'>
+        <%= label_tag(:description, "Descripción") %>
+        <%= form.text_field :description, :class => 'validate', :id => 'description'  %>
+      </div>
+      <div class="col s6 m6">
+        <p>
+          <label>
+            <%= form.check_box :recurrent, :value => 'true', :id => 'recurrent' %>
+            <span>Evento único (final, parcial, charla, etc)</span>
+          </label>
+        </p>
+      </div>
+      <div class='col s6 m6 card cyan lighten-5'>
+        <p>
+          Si el evento no es único, se repetira semanalmente hasta la fecha de fin.
+        </p>
+      </div>
+      <div class='input-field col s12 m3' id="start_time_div">
+        <%= label_tag(:start_time, "Hora de Inicio") %>
+        <%= form.text_field :start_time, :class => 'timepicker validate', :value => Time.now.to_s(:time) , :id => 'start_time',required: :'required' %>
+      </div>
+      <div class='input-field col s12 m3' id="end_time_div">
+        <%= label_tag(:end_time, "Hora de Fin") %>
+        <%= form.text_field :end_time , :value => Time.now.advance(hours: 2).to_s(:time), :class => 'timepicker validate', :id => 'end_time', required: :'required'%>
+      </div>
+      <div class='input-field col s12 m3' id="start_date_div">
+        <%= label_tag(:start_date, "Desde", :id =>'end_date_tag') %>
+        <%= form.text_field :start_date, :class => 'datepicker validate', :id => 'start_date', required: :'required' %>
+      </div>
+      <div class='input-field col s12 m3' id="end_date_div">
+        <%= label_tag(:end_date, "Hasta") %>
+        <%= form.text_field :end_date, :class => 'datepicker validate', :id => 'end_date', required: :'required' %>
+      </div>
+      <div class='input-field col s12' id="date_div" hidden>
+        <%= label_tag(:date, "Dia") %>
+        <%= form.text_field :end_date, :class => 'datepicker validate', :id => 'date', required: :'required' %>
+      </div>
+      <br>
+      <%= hidden_field(:subject, :id) %>
+      <% if event.errors.any? %>
+        <div id="error_explanation" class="col s12 m12">
+          <div class="card-panel">
+            <ul class="collection">
+              <% event.errors.full_messages.each do |message| %>
+                <li class="collection-item orange"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+      <div class='input-field col s12 m12'>
+        <%= form.submit class: 'btn'%>
+      </div>
     </div>
-    <% end %>
-    <br>
-    <div class='input-field col s12 m12'>
-      <%= form.text_field :name, :class => 'validate', :id => 'name', required: :'required' %>
-      <%= label_tag(:name, "Nombre") %>
-    </div>
-    <div class='input-field col s12 m12'>
-      <%= form.text_field :description, :class => 'validate', :id => 'description'  %>
-      <%= label_tag(:description, "Descripción") %>
-    </div>
-    <div class="col s12 m12">
-      <p>
-        <label>
-          <%= form.check_box :recurrent, :value => 'true', :id => 'recurrent' %>
-          <span>Evento único (final, parcial, charla, etc)</span>
-        </label>
-      </p>
-    </div>
-    <div class='input-field col s12 m3' id="start_time_div">
-      <%= form.text_field :start_time, :class => 'timepicker validate', :value => Time.now.to_s(:time) , :id => 'start_time',required: :'required' %>
-      <%= label_tag(:start_time, "Hora de Inicio") %>
-    </div>
-    <div class='input-field col s12 m3' id="end_time_div">
-      <%= form.text_field :end_time , :value => Time.now.advance(hours: 2).to_s(:time), :class => 'timepicker validate', :id => 'end_time', required: :'required'%>
-      <%= label_tag(:end_time, "Hora de Fin") %>
-    </div>
-    <div class='input-field col s12 m3' id="start_date_div">
-      <%= form.text_field :start_date, :class => 'datepicker validate', :id => 'start_date', required: :'required' %>
-      <%= label_tag(:start_date, "Desde", :id =>'end_date_tag') %>
-    </div>
-    <div class='input-field col s12 m3' id="end_date_div">
-      <%= form.text_field :end_date, :class => 'datepicker validate', :id => 'end_date', required: :'required' %>
-      <%= label_tag(:end_date, "Hasta") %>
-    </div>
-    <br>
-    <%= hidden_field(:subject, :id) %>
-
-    <div class='input-field col s12 m12'>
-      <%= form.submit class: 'btn'%>
-    </div>
-    
   </div>
-</div>
 <% end %>

@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration[5.1]
       t.boolean :recurrent
       t.date :start_date
       t.date :end_date
+      t.date :date
       t.string :description
       t.references :user, foreign_key: true
       t.references :subject, foreign_key: true

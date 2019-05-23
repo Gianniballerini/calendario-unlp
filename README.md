@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version = 2.6.1
 
-Things you may want to cover:
+# Steps
 
-* Ruby version
+install ruby, I would recommend rbenv to manage versions.
 
-* System dependencies
+Install all the necesary dependencies
 
-* Configuration
+`$ bundle install`
 
-* Database creation
+Create and migrate the DataBase
 
-* Database initialization
+`$ rails db:migrate`
 
-* How to run the test suite
+Seed it
 
-* Services (job queues, cache servers, search engines, etc.)
+`$ rails db:seed`
 
-* Deployment instructions
+Run the app.
 
-* ...
+`$ rails s`

@@ -4,13 +4,13 @@
 		<div class="center flow-text">Nuevo horario para <%= @subject.name %> </div>
 	</nav>	
 </header>
-<main>
 
-<%= render 'form', event: @event , :subject => @subject%>
-<div class="center">
-	<%= link_to 'Back', root_path, :class => 'btn' %>
-</div>
-<br>
+<main>
+  <%= render 'form', event: @event , :subject => @subject%>
+  <div class="center">
+  	<%= link_to 'Back', root_path, :class => 'btn' %>
+  </div>
+  <br>
 </main>
 
 <footer class="page-footer  cyan darken-1">
