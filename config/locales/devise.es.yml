@@ -1,55 +1,62 @@
 es:
-  errors:
-    messages:
-      expired: "ha expirado, por favor pide una nueva"
-      not_found: "no encontrado"
-      already_confirmed: "ya fue confirmada. Intenta ingresar."
-      not_locked: "no ha sido bloqueada"
-      not_saved:
-        one: "Ha habido 1 error:"
-        other: "Han habido %{count} errores:"
-
   devise:
-    failure:
-      already_authenticated: 'Ya iniciaste sesión.'
-      unauthenticated: 'Tienes que registrarte o iniciar sesión antes de continuar.'
-      unconfirmed: 'Tienes que confirmar tu cuenta antes de continuar.'
-      locked: 'Tu cuente está bloqueada.'
-      invalid: 'Email o contraseña inválidos.'
-      invalid_token: 'Token de autentificación inválido.'
-      timeout: 'Tu sesión ha expirado. Inicia sesión nuevamente.'
-      inactive: 'Tu cuenta aun no ha sido activada.'
-    sessions:
-      signed_in: 'Iniciaste sesión correctamente.'
-      signed_out: 'Cerraste sesión correctamente.'
-    passwords:
-      send_instructions: 'Recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos.'
-      updated: 'Tu contraseña fue cambiada correctamente. Has iniciado sesión.'
-      updated_not_active: 'Tu contraseña fue cambiada correctamente.'
-      send_paranoid_instructions: "Si tu email existe en el sistema, recibirás instrucciones para recuperar tu contraseña en él"
     confirmations:
-      send_instructions: 'Recibirás instrucciones para confirmar tu cuenta en tu email en unos minutos.'
-      send_paranoid_instructions: 'Si tu email existe en el sistema, recibirás instrucciones para confirmar tu cuenta en tu email en unos minutos.'
-      confirmed: 'Tu cuenta fue confirmada. Has iniciado sesión.'
-    registrations:
-      signed_up: 'Bienvenido! Te has registrado correctamente.'
-      signed_up_but_unconfirmed: 'Te hemos enviado un email con instrucciones para que confirmes tu cuenta.'
-      signed_up_but_inactive: 'Te has registrado correctamente, pero tu cuenta aun no ha sido activada.'
-      signed_up_but_locked: 'Te has registrado correctamente, pero tu cuenta está bloqueada.'
-      updated: 'Actualizaste tu cuenta correctamente.'
-      update_needs_confirmation: "Actualizaste tu cuenta correctamente, pero tenemos que revalidar tu email. Revisa tu correo para confirmar la dirección."
-      destroyed: 'Adiós, tu cuenta ha sido eliminada. Esperamos verte de vuelta pronto!'
-    unlocks:
-      send_instructions: 'Recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos'
-      unlocked: 'Tu cuenta ha sido desbloqueada. Inicia sesión para continuar.'
-      send_paranoid_instructions: 'Si tu cuenta existe, recibirás instrucciones para desbloquear tu cuenta en unos minutos'
-    omniauth_callbacks:
-      success: 'Te autentificaste correctamente con tu cuenta de %{kind}.'
-      failure: 'No pudimos autentificar tu cuenta de %{kind} por la siguiente razón: %{reason}.'
+      confirmed: 'Tu cuenta ha sido confirmada. Ya has accedido a tu cuenta.'
+      send_instructions: 'Recibirás un email con instrucciones para confirmar tu cuenta en poco minutos.'
+      send_paranoid_instructions: 'Si tu email ya existe en nuestra base de datos, recibirás un email con instrucciones para confirmar tu cuenta en poco minutos.'
+    failure:
+      already_authenticated: 'Ya estás conectado.'
+      inactive: 'Tu cuenta no ha sido activada.'
+      invalid: 'Contraseña o Email incorrecto.'
+      locked: 'Tu cuenta esta bloqueada.'
+      last_attempt: "Tienes un ultimo intento antes de que tu cuenta se bloquee."
+      not_found_in_database: "%{authentication_keys} o contraseña."
+      timeout: 'Tu sesión ha expirado, por favor accede de nuevo para continuar.'
+      unauthenticated: 'Necesitas acceder a tu cuenta o registrarte antes de continuar.'
+      unconfirmed: 'Necesitas confirmar tu cuenta antes de continuar.'
     mailer:
       confirmation_instructions:
         subject: 'Instrucciones de confirmación'
       reset_password_instructions:
-        subject: 'Instrucciones de cambio de contraseña'
+        subject: 'Instrucciones para cambiar tu contraseña'
       unlock_instructions:
-        subject: 'Instrucciones de desbloqueo'
+        subject: 'Instrucciones para desbloquear tu cuenta'
+      email_changed:
+        subject: "El email cambió"
+      password_change:
+        subject: "La contraseña cambió"
+    omniauth_callbacks:  
+      failure: 'No has sido autorizado en la cuenta %{kind} porque "%{reason}".'
+      success: 'Has sido autorizado satisfactoriamente de la cuenta %{kind}.'
+    passwords:
+      no_token: "No puedes acceder a esta pagina sin venir de un email de reseteo de contraseña. Si vienes de ese email, porfavor usar la URL provista completa."
+      send_instructions: 'Recibirás un email con instrucciones para cambiar tu contraseña en poco minutos.'
+      send_paranoid_instructions: 'Si tu email ya existe en nuestra base de datos, recibirás un enlace para recuperar tu contraseña en tu correo'
+      updated: 'Tu contraseña ha sido modificada. Ya has accedido a tu cuenta.'
+      updated_not_active: "Tu contraseña ha sido cambiada con éxito."
+    registrations:
+      destroyed: '!Adiós! Tu cuenta ha sido cancelada. Esperamos verte pronto.'
+      signed_up: '¡Bienvenido! Te has registrado correctamente.'
+      signed_up_but_inactive: 'Te has registrado correctamente. Sin embargo, no estás conectado todavía porque tu cuenta está %{reason}.'
+      signed_up_but_locked: "Te has registrado con exito. Sin embargo, no pudimos loguearte porque tu cuenta esta bloqueada."
+      signed_up_but_unconfirmed: "Un mensaje con un link de confirmación a sido enviado a tu direccion de correo. Por favor sigue el link para activar tu cuenta."
+      update_needs_confirmation: "Has actualizado tu cuenta exitosamente, pero necesitamos que verifiques tu nueva direccion de email. Por favor revisa tu email y sigue el link para confirmar tu nuevo email."
+      updated: 'Has actualizado tu cuenta correctamente.'
+    sessions:
+      signed_in: 'Te has conectado correctamente.'
+      signed_out: 'Has salido correctamente.'
+      already_signed_out: "Signed out successfully."
+    unlocks:
+      send_instructions: 'Recibirás un email con instrucciones para desbloquear tu cuenta en pocos minutos.'
+      send_paranoid_instructions: 'Si tu cuenta existe, recibirás un email con instrucciones para desbloquear tu cuenta en pocos minutos.'
+      unlocked: 'Tu cuenta ha sido desbloqueada. Ya has accedido a tu cuenta.'
+  errors:
+    messages:
+      not_found: 'no encontrado'
+      already_confirmed: 'ya ha sido confirmada'
+      not_locked: 'no está bloqueada'
+      expired: "ha caducado, por favor pide uno nuevo"
+      confirmation_period_expired: "necesita ser confirmado dentro de %{period}, porfavor solicite uno nuevo"
+      not_saved:
+        one: "1 error evitó guardar este %{resource}:"
+        other: "%{count} errores evitaron guardar este %{resource}:"

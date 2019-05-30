@@ -44,6 +44,9 @@ gem "font-awesome-rails"
 #Figaro parses a Git-ignored YAML file in your application and loads its values into ENV.
 gem "figaro"
 
+# translations
+gem 'rails-i18n'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
